@@ -6,8 +6,19 @@ final class DisplayMonitor {
     var onChange: ((Bool) -> Void)?
     private var pending: DispatchWorkItem?
 
+    static var externalDisplayNames: [String] {
+        NSScreen.screens.filter { !isBuiltIn($0) }.map(\.localizedName)
+    }
+
     static var isDisplayConnected: Bool {
-        NSScreen.screens.contains { $0.localizedName.localizedCaseInsensitiveContains(Config.displayName) }
+        let names = externalDisplayNames
+        guard let target = Config.displayName else { return !names.isEmpty }
+        return names.contains(target)
+    }
+
+    private static func isBuiltIn(_ screen: NSScreen) -> Bool {
+        guard let id = screen.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as? CGDirectDisplayID else { return false }
+        return CGDisplayIsBuiltin(id) != 0
     }
 
     func start() {
