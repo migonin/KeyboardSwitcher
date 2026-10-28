@@ -21,7 +21,9 @@ A Magic Keyboard or Trackpad can be paired with only one Mac at a time, so the a
 
 ## Install
 
-Build from source. You need the Xcode command line tools (`xcode-select --install`):
+**Download:** get `KeyboardSwitcher.zip` from the [latest release](https://github.com/migonin/KeyboardSwitcher/releases/latest), unzip it, and move `KeyboardSwitcher.app` to /Applications. The app isn't notarized by Apple, so macOS blocks it the first time you open it. Open it anyway from **System Settings → Privacy & Security → Open Anyway**.
+
+**Or build from source.** You need the Xcode command line tools (`xcode-select --install`):
 
 ```sh
 git clone https://github.com/migonin/KeyboardSwitcher.git
@@ -29,8 +31,6 @@ cd KeyboardSwitcher
 ./build.sh --install
 open /Applications/KeyboardSwitcher.app
 ```
-
-The app is signed locally, not notarized by Apple. If you download a prebuilt `KeyboardSwitcher.app` instead of building it, macOS will block it the first time you open it. Open it anyway from **System Settings → Privacy & Security → Open Anyway**.
 
 ## Set up
 

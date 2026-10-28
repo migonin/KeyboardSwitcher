@@ -16,7 +16,7 @@ codesign --force --sign - "$app"
 echo "Built $app"
 
 if [[ "${1:-}" == "--zip" ]]; then
-    ditto -c -k --keepParent "$app" build/KeyboardSwitcher.zip
+    ditto -c -k --norsrc --noextattr --keepParent "$app" build/KeyboardSwitcher.zip
     echo "Packed build/KeyboardSwitcher.zip"
 fi
 
